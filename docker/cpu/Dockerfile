@@ -14,7 +14,13 @@ RUN  pacman -Syyu --noconfirm \
 	&& pacman -S findutils nano vi --needed --noconfirm \
 	&& pacman-db-upgrade \
   && export editor=nano \
-  && pacman -S --needed --noconfirm git cmake build-essential libgoogle-glog-dev libgflags-dev libeigen3-dev libopencv-dev libcppnetlib-dev libboost-dev libboost-iostreams-dev libcurl4-openssl-dev protobuf-compiler libopenblas-dev libhdf5-dev libprotobuf-dev libleveldb-dev libsnappy-dev liblmdb-dev libutfcpp-dev wget unzip
+  && pacman -S --needed --noconfirm git cmake # build-essential libgoogle-glog-dev libgflags-dev libeigen3-dev libopencv-dev libcppnetlib-dev libboost-dev libboost-iostreams-dev libcurl4-openssl-dev protobuf-compiler libopenblas-dev libhdf5-dev libprotobuf-dev libleveldb-dev libsnappy-dev liblmdb-dev libutfcpp-dev wget unzip
+
+ADD https://raw.githubusercontent.com/imriss/ZoneMinder/master/aur.sh /usr/sbin/aur.sh
+ADD https://raw.githubusercontent.com/imriss/ZoneMinder/master/add-aur.sh /usr/sbin/add-aur
+RUN chmod +x /usr/sbin/aur.sh
+RUN chmod +x /usr/sbin/add-aur
+RUN add-aur docker
 
 RUN findd
 WORKDIR /opt
