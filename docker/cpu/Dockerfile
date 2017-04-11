@@ -17,8 +17,8 @@ RUN  pacman -Syyu --noconfirm \
 RUN ls -la /usr/sbin
 ADD https://raw.githubusercontent.com/imriss/ZoneMinder/master/aur.sh /usr/sbin/aur.sh
 ADD https://raw.githubusercontent.com/imriss/ZoneMinder/master/add-aur.sh /usr/sbin/add-aur
-RUN chmod +x /usr/sbin/aur.sh
-RUN chmod +x /usr/sbin/add-aur
+RUN chmod u+x /usr/sbin/aur.sh
+RUN chmod u+x /usr/sbin/add-aur
 RUN add-aur docker
 
 RUN useradd -ms /bin/bash dd
