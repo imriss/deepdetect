@@ -8,6 +8,7 @@ LABEL description="DeepDetect deep learning server & API / CPU version / Arch Li
 RUN ln -sf /dev/stdout /var/log/deepdetect.log
 RUN ln -sf /dev/stderr /var/log/deepdetect.log
 
+RUN ls -la /usr/sbin
 ADD https://raw.githubusercontent.com/imriss/ZoneMinder/master/aur.sh /usr/sbin/aur.sh
 ADD https://raw.githubusercontent.com/imriss/ZoneMinder/master/add-aur.sh /usr/sbin/add-aur
 RUN chmod +x /usr/sbin/aur.sh
