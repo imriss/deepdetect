@@ -1,17 +1,22 @@
-FROM ubuntu:16.04
+FROM imriss/archlinux
 
-RUN echo 'building CPU DeepDetect image'
+RUN echo 'building CPU Arch Linux DeepDetect image'
 
-MAINTAINER Emmanuel Benazera "beniz@droidnik.fr"
-LABEL description="DeepDetect deep learning server & API / CPU version"
+MAINTAINER Reza Farrahi <imriss@ieee.org>
+LABEL description="DeepDetect deep learning server & API / CPU version / Arch Linux"
 
 RUN ln -sf /dev/stdout /var/log/deepdetect.log
 RUN ln -sf /dev/stderr /var/log/deepdetect.log
 
 RUN useradd -ms /bin/bash dd
 
-RUN apt-get update && apt-get install -y git cmake build-essential libgoogle-glog-dev libgflags-dev libeigen3-dev libopencv-dev libcppnetlib-dev libboost-dev libboost-iostreams-dev libcurl4-openssl-dev protobuf-compiler libopenblas-dev libhdf5-dev libprotobuf-dev libleveldb-dev libsnappy-dev liblmdb-dev libutfcpp-dev wget unzip
+RUN  pacman -Syyu --noconfirm \
+	&& pacman -S findutils nano vi --needed --noconfirm \
+	&& pacman-db-upgrade \
+  && export editor=nano \
+  && pacman -S --needed --noconfirm git cmake build-essential libgoogle-glog-dev libgflags-dev libeigen3-dev libopencv-dev libcppnetlib-dev libboost-dev libboost-iostreams-dev libcurl4-openssl-dev protobuf-compiler libopenblas-dev libhdf5-dev libprotobuf-dev libleveldb-dev libsnappy-dev liblmdb-dev libutfcpp-dev wget unzip
 
+RUN findd
 WORKDIR /opt
 RUN git clone https://github.com/jpbarrette/curlpp.git
 WORKDIR /opt/curlpp
