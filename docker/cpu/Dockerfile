@@ -29,7 +29,15 @@ RUN add-aur docker
 
 RUN su docker -c 'pacaur -S --needed --noprogressbar --noedit --noconfirm openblas-lapack utf8cpp cpp-netlib'
 
-RUN su docker -c 'pacaur -S --needed --noprogressbar --noedit --noconfirm snappy-git'
+WORKDIR /opt
+RUN git clone --branch=patch-1 https://github.com/imriss/snappy.git
+WORKDIR /opt/snappy
+RUN ./autoconf.sh \
+  && ./configure \
+  && make all
+RUN make install
+
+# RUN su docker -c 'pacaur -S --needed --noprogressbar --noedit --noconfirm snappy-git'
 
 RUN useradd -ms /bin/bash dd
 
