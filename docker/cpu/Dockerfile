@@ -12,6 +12,7 @@ RUN  pacman -Syyu --noconfirm \
 	&& pacman -S findutils nano vi --needed --noconfirm \
 	&& pacman-db-upgrade \
   && export editor=nano \
+  && pacman -S --needed --noconfirm freetype2 systemd libglvnd \
   && pacman -S --needed --noconfirm base-devel bash git cmake google-glog gflags eigen \
   opencv boost boost-libs openssl libcurl-compat curl protobuf  \
   hdf5 protobuf-c leveldb lmdb wget unzip
