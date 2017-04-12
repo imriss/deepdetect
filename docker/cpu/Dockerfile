@@ -32,6 +32,7 @@ RUN su docker -c 'pacaur -S --needed --noprogressbar --noedit --noconfirm openbl
 WORKDIR /opt
 RUN git clone --branch=patch-1 https://github.com/imriss/snappy.git
 WORKDIR /opt/snappy
+RUN ls -la
 RUN ./autoconf.sh \
   && ./configure \
   && make all
