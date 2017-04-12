@@ -29,7 +29,7 @@ RUN add-aur docker
 
 RUN su docker -c 'pacaur -S --needed --noprogressbar --noedit --noconfirm openblas-lapack utf8cpp cpp-netlib'
 
-RUN su docker -c 'pacaur -S --needed --noprogressbar --noedit --noconfirm libsnappy'
+RUN su docker -c 'pacaur -S --needed --noprogressbar --noedit --noconfirm snappy-git'
 
 RUN useradd -ms /bin/bash dd
 
