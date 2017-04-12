@@ -13,8 +13,8 @@ RUN  pacman -Syyu --noconfirm \
 	&& pacman-db-upgrade \
   && export editor=nano \
   && pacman -S --needed --noconfirm base-devel bash git cmake google-glog gflags eigen \
-  opencv cpp-netlib boost boost-libs openssl libcurl-compat curl protobuf openblas-lapack \
-  hdf5 protobuf-c leveldb libsnappy lmdb utf8cpp wget unzip
+  opencv boost boost-libs openssl libcurl-compat curl protobuf  \
+  hdf5 protobuf-c leveldb lmdb wget unzip
 
 RUN ls -la /usr/sbin
 # ADD https://raw.githubusercontent.com/imriss/ZoneMinder/master/aur.sh /usr/sbin/aur.sh
@@ -24,6 +24,8 @@ ADD ./add-aur.sh /usr/sbin/add-aur
 RUN chmod u+x /usr/sbin/aur.sh
 RUN chmod u+x /usr/sbin/add-aur
 RUN add-aur docker
+
+RUN su docker -c 'pacaur -S --needed --noprogressbar --noedit --noconfirm libsnappy openblas-lapack utf8cpp cpp-netlib'
 
 RUN useradd -ms /bin/bash dd
 
