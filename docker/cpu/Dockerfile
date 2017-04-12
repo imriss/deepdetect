@@ -19,8 +19,8 @@ RUN pacman -S --needed --noconfirm base-devel bash git cmake google-glog gflags 
   hdf5 protobuf-c leveldb lmdb wget unzip
 
 RUN ls -la /usr/sbin
-# ADD https://raw.githubusercontent.com/imriss/ZoneMinder/master/aur.sh /usr/sbin/aur.sh
-# ADD https://raw.githubusercontent.com/imriss/ZoneMinder/master/add-aur.sh /usr/sbin/add-aur
+# DDADD https://raw.githubusercontent.com/imriss/ZoneMinder/master/aur.sh /usr/sbin/aur.sh
+# DDADD https://raw.githubusercontent.com/imriss/ZoneMinder/master/add-aur.sh /usr/sbin/add-aur
 ADD ./aur.sh /usr/sbin/aur.sh
 ADD ./add-aur.sh /usr/sbin/add-aur
 RUN chmod u+x /usr/sbin/aur.sh
@@ -47,7 +47,7 @@ RUN git clone https://github.com/jpbarrette/curlpp.git
 WORKDIR /opt/curlpp
 RUN cmake .
 RUN make install
-RUN cp /usr/local/lib/libcurlpp.* /usr/lib/
+# RUN cp /usr/local/lib/libcurlpp.* /usr/lib/
 
 WORKDIR /opt
 RUN git clone https://github.com/beniz/deepdetect.git && cd deepdetect && mkdir build
