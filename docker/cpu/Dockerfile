@@ -27,7 +27,9 @@ RUN chmod u+x /usr/sbin/aur.sh
 RUN chmod u+x /usr/sbin/add-aur
 RUN add-aur docker
 
-RUN su docker -c 'pacaur -S --needed --noprogressbar --noedit --noconfirm libsnappy openblas-lapack utf8cpp cpp-netlib'
+RUN su docker -c 'pacaur -S --needed --noprogressbar --noedit --noconfirm openblas-lapack utf8cpp cpp-netlib'
+
+RUN su docker -c 'pacaur -S --needed --noprogressbar --noedit --noconfirm libsnappy'
 
 RUN useradd -ms /bin/bash dd
 
