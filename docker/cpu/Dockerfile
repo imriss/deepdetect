@@ -12,7 +12,9 @@ RUN  pacman -Syyu --noconfirm \
 	&& pacman -S findutils nano vi --needed --noconfirm \
 	&& pacman-db-upgrade \
   && export editor=nano \
-  && pacman -S --needed --noconfirm base-devel bash git cmake # build-essential libgoogle-glog-dev libgflags-dev libeigen3-dev libopencv-dev libcppnetlib-dev libboost-dev libboost-iostreams-dev libcurl4-openssl-dev protobuf-compiler libopenblas-dev libhdf5-dev libprotobuf-dev libleveldb-dev libsnappy-dev liblmdb-dev libutfcpp-dev wget unzip
+  && pacman -S --needed --noconfirm base-devel bash git cmake google-glog gflags eigen \
+  opencv cpp-netlib boost boost-libs openssl libcurl-compat curl protobuf openblas-lapack \
+  hdf5 protobuf-c leveldb libsnappy lmdb utf8cpp wget unzip
 
 RUN ls -la /usr/sbin
 # ADD https://raw.githubusercontent.com/imriss/ZoneMinder/master/aur.sh /usr/sbin/aur.sh
@@ -25,7 +27,6 @@ RUN add-aur docker
 
 RUN useradd -ms /bin/bash dd
 
-RUN findd
 WORKDIR /opt
 RUN git clone https://github.com/jpbarrette/curlpp.git
 WORKDIR /opt/curlpp
