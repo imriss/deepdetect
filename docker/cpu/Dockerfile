@@ -33,7 +33,7 @@ WORKDIR /opt
 RUN git clone --branch=patch-1 https://github.com/imriss/snappy.git
 WORKDIR /opt/snappy
 RUN ls -la
-RUN ./autoconf.sh \
+RUN ./autogen.sh \
   && ./configure \
   && make all
 RUN make install
