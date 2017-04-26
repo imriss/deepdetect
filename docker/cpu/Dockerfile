@@ -49,6 +49,8 @@ RUN cmake .
 RUN make install
 # RUN cp /usr/local/lib/libcurlpp.* /usr/lib/
 
+RUN echo `find / -name "buffer.hpp" 2>/dev/null`
+
 WORKDIR /opt
 RUN git clone https://github.com/beniz/deepdetect.git && cd deepdetect && mkdir build
 
