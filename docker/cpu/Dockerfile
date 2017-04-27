@@ -27,7 +27,7 @@ RUN chmod u+x /usr/sbin/aur.sh
 RUN chmod u+x /usr/sbin/add-aur
 RUN add-aur docker
 
-RUN su docker -c 'pacaur -S --needed --noprogressbar --noedit --noconfirm openblas-lapack utf8cpp cpp-netlib'
+RUN su docker -c 'pacaur -S --needed --noprogressbar --noedit --noconfirm openblas-lapack utf8cpp cpp-netlib asio'
 
 WORKDIR /opt
 RUN git clone --branch=patch-1 https://github.com/imriss/snappy.git
@@ -49,8 +49,8 @@ RUN cmake .
 RUN make install
 # RUN cp /usr/local/lib/libcurlpp.* /usr/lib/
 
-RUN cp /usr/include/boost/asio/*.hpp /usr/include/\
-  && echo `find / -name 'buffer.hpp' 2>/dev/null`
+# RUN cp /usr/include/boost/asio/*.hpp /usr/include/\
+#  && echo `find / -name 'buffer.hpp' 2>/dev/null`
 
 WORKDIR /opt
 RUN git clone https://github.com/beniz/deepdetect.git && cd deepdetect && mkdir build
