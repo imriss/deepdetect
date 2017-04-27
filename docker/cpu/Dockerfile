@@ -33,7 +33,7 @@ RUN su docker -c 'pacaur -S --needed --noprogressbar --noedit --noconfirm openbl
 RUN cd /home/docker \
   && mkdir cpp-netlib \
   && cd cpp-netlib \
-  && wget aur-e15211bf5b909285784dd5b2de48e53bbb4ae9d1.tar.gz -O cpp-netlib.tar.gz \
+  && wget https://aur.archlinux.org/cgit/aur.git/snapshot/aur-e15211bf5b909285784dd5b2de48e53bbb4ae9d1.tar.gz -O cpp-netlib.tar.gz \
   && tar -xvf cpp-netlib.tar.gz \
   && cd cpp-netlib \
   && echo `pwd` \  
