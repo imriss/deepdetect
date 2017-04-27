@@ -82,7 +82,4 @@ RUN cp /opt/deepdetect/templates/caffe/resnet_50/*prototxt /opt/models/resnet_50
 RUN chown -R dd:dd /opt/deepdetect
 RUN chown -R dd:dd /opt/models
 
-USER dd
-WORKDIR /opt/deepdetect/build/main
-CMD ./dede -host 0.0.0.0
-EXPOSE 8080
+
