@@ -27,8 +27,16 @@ RUN chmod u+x /usr/sbin/aur.sh
 RUN chmod u+x /usr/sbin/add-aur
 RUN add-aur docker
 
+RUN su docker -c 'pacaur -S --needed --noprogressbar --noedit --noconfirm openblas-lapack utf8cpp asio'
+
 # aur-e15211bf5b909285784dd5b2de48e53bbb4ae9d1 is cpp-netlib 0.11.2
-RUN su docker -c 'pacaur -S --needed --noprogressbar --noedit --noconfirm openblas-lapack utf8cpp asio aur-e15211bf5b909285784dd5b2de48e53bbb4ae9d1'
+WORKDIR /home/docker \
+  && mkdir cpp-netlib \
+  && cd cpp-netlib \
+  && wget aur-e15211bf5b909285784dd5b2de48e53bbb4ae9d1.tar.gz \
+  && tar -xvf aur-e15211bf5b909285784dd5b2de48e53bbb4ae9d1.tar.gz \
+  && cd aur-e15211bf5b909285784dd5b2de48e53bbb4ae9d1 \
+  && su docer -c 'bash makepkg -si --skippgpcheck --noconfirm --needed'
 
 WORKDIR /opt
 RUN git clone --branch=patch-1 https://github.com/imriss/snappy.git
