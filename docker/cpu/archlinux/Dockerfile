@@ -27,7 +27,7 @@ RUN chmod u+x /usr/sbin/aur.sh
 RUN chmod u+x /usr/sbin/add-aur
 RUN add-aur docker
 
-RUN su docker -c 'pacaur -S --needed --noprogressbar --noedit --noconfirm openblas-lapack utf8cpp asio'
+RUN su docker -c 'pacaur -S --needed --noprogressbar --noedit --noconfirm openblas-lapack utf8cpp asio libcurlpp'
 
 # aur-e15211bf5b909285784dd5b2de48e53bbb4ae9d1 is cpp-netlib 0.11.2
 RUN cd /home/docker \
@@ -49,8 +49,6 @@ RUN ./autogen.sh \
 RUN make install
 
 # RUN su docker -c 'pacaur -S --needed --noprogressbar --noedit --noconfirm snappy-git'
-
-RUN su docker -c 'pacaur -S --needed --noprogressbar --noedit --noconfirm libcurlpp'
 
 RUN useradd -ms /bin/bash dd
 
