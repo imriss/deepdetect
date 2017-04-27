@@ -33,9 +33,9 @@ RUN su docker -c 'pacaur -S --needed --noprogressbar --noedit --noconfirm openbl
 WORKDIR /home/docker \
   && mkdir cpp-netlib \
   && cd cpp-netlib \
-  && wget aur-e15211bf5b909285784dd5b2de48e53bbb4ae9d1.tar.gz \
-  && tar -xvf aur-e15211bf5b909285784dd5b2de48e53bbb4ae9d1.tar.gz \
-  && cd aur-e15211bf5b909285784dd5b2de48e53bbb4ae9d1 \
+  && wget aur-e15211bf5b909285784dd5b2de48e53bbb4ae9d1.tar.gz -O cpp-netlib.tar.gz \
+  && tar -xvf cpp-netlib.tar.gz \
+  && cd cpp-netlib \
   && su docer -c 'bash makepkg -si --skippgpcheck --noconfirm --needed'
 
 WORKDIR /opt
