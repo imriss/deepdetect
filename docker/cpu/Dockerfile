@@ -50,14 +50,9 @@ RUN make install
 
 # RUN su docker -c 'pacaur -S --needed --noprogressbar --noedit --noconfirm snappy-git'
 
-RUN useradd -ms /bin/bash dd
+RUN su docker -c 'pacaur -S --needed --noprogressbar --noedit --noconfirm libcurlpp'
 
-WORKDIR /opt
-RUN git clone https://github.com/jpbarrette/curlpp.git
-WORKDIR /opt/curlpp
-RUN cmake .
-RUN make install
-# RUN cp /usr/local/lib/libcurlpp.* /usr/lib/
+RUN useradd -ms /bin/bash dd
 
 # RUN cp /usr/include/boost/asio/*.hpp /usr/include/\
 #  && echo `find / -name 'buffer.hpp' 2>/dev/null`
