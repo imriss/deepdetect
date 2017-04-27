@@ -30,7 +30,7 @@ RUN add-aur docker
 RUN su docker -c 'pacaur -S --needed --noprogressbar --noedit --noconfirm openblas-lapack utf8cpp asio'
 
 # aur-e15211bf5b909285784dd5b2de48e53bbb4ae9d1 is cpp-netlib 0.11.2
-WORKDIR /home \
+RUN cd /home \
   && mkdir docker \
   && cd docker \
   && mkdir cpp-netlib \
