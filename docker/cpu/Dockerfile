@@ -36,9 +36,7 @@ RUN cd /home/docker \
   && wget https://aur.archlinux.org/cgit/aur.git/snapshot/aur-e15211bf5b909285784dd5b2de48e53bbb4ae9d1.tar.gz -O cpp-netlib.tar.gz \
   && tar -xvf cpp-netlib.tar.gz \
   && cd aur-e15211bf5b909285784dd5b2de48e53bbb4ae9d1 \
-  && echo `pwd` \  
-  && echo `ls -la` \
-  && su docker -c 'makepkg -si --skippgpcheck --noconfirm --verbose '
+  && su docker -c 'makepkg -si --skippgpcheck --noconfirm '
 
 WORKDIR /opt
 RUN git clone --branch=patch-1 https://github.com/imriss/snappy.git
