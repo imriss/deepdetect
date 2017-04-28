@@ -37,18 +37,22 @@ RUN cd /home/docker \
   && tar -xvf cpp-netlib.tar.gz \
   && chmod 777 aur-e15211bf5b909285784dd5b2de48e53bbb4ae9d1 \
   && cd aur-e15211bf5b909285784dd5b2de48e53bbb4ae9d1 \
-  && su docker -c 'makepkg -si --skippgpcheck --noconfirm '
-
-WORKDIR /opt
-RUN git clone --branch=patch-1 https://github.com/imriss/snappy.git
-WORKDIR /opt/snappy
-RUN ls -la
-RUN ./autogen.sh \
+  && su docker -c 'makepkg -si --skippgpcheck --noconfirm ' \
+  && cd /home/docker \
+  && mkdir snappy \
+  && cd snappy \
+  && git clone --branch=patch-1 https://github.com/imriss/snappy.git \
+  && cd snappy \
+  && ./autogen.sh \
   && ./configure \
-  && make all
-RUN make install
+  && make all \
+  && make install
 
 # RUN su docker -c 'pacaur -S --needed --noprogressbar --noedit --noconfirm snappy-git'
+
+# cleanup
+RUN rm -rd /home/docker/* \
+  && pacman -Scc
 
 RUN useradd -ms /bin/bash dd
 
